@@ -1,0 +1,18 @@
+.header {
+    font-family: robotoMedium, Arial, Helvetica, sans-serif;
+
+    .link {
+        color: var(--c-black-light);
+        letter-spacing: 1px;
+
+        &:hover {
+            color: var(--c-red-bolder);
+        }
+    }
+
+    button {
+        outline: none;
+        border: none;
+        background-color: var(--c-white);
+    }
+}
