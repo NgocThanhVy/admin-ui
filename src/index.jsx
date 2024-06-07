@@ -9,7 +9,7 @@ import Login from 'components/common/Login';
 import Register from 'components/common/Register';
 import UserDetail from 'components/UserDetail';
 import UserList from 'components/UserList';
-import UserCreate from 'components/UserList';
+import UserCreate from 'components/UserCreate';
 import { Provider } from 'react-redux';
 import store from './store/store';
 

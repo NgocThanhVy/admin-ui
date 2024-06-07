@@ -1,95 +1,110 @@
 import React, { useState, useEffect } from 'react';
-import classes from "assets/styles/UserList.module.scss";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUsers } from "store/userSlice";
+import { fetchUsers, deleteUser } from "store/userSlice";
+import classes from "assets/styles/UserList.module.scss";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 const UserList = () => {
   const dispatch = useDispatch();
+  
   const userList = useSelector((store) => store.user.users);
-  const [confirmDelete, setConfirmDelete] = useState(false); // State để theo dõi trạng thái của form hỏi xác nhận
-  const [userIdToDelete, setUserIdToDelete] = useState(null); // State để lưu trữ ID của người dùng cần xóa
+
+  const [modalShow, setModalShow] = React.useState(false);
+  const [userSelected, setUserSelected] = useState(null);
+  
+  const handleDeleteUser = async() => {
+      await dispatch(deleteUser(userSelected?.id));
+      dispatch(fetchUsers());
+      setModalShow(false);  
+  };
 
   useEffect(() => {
     dispatch(fetchUsers());
+   
   }, []);
 
-  // Hàm xác nhận xóa
-  const handleDeleteConfirm = (userId) => {
-    setUserIdToDelete(userId);
-    setConfirmDelete(true);
-  };
-
-  // Hàm xóa người dùng
-  const handleDeleteUser = () => {
-    // Gửi hành động xóa người dùng tới reducer
-    // dispatch(deleteUser(userIdToDelete));
-
-    // Sau khi xóa, đặt lại trạng thái của form hỏi xác nhận
-    setConfirmDelete(false);
-  };
-
-  // Hàm hủy bỏ xóa
-  const handleCancelDelete = () => {
-    // Đặt lại trạng thái của form hỏi xác nhận
-    setConfirmDelete(false);
-  };
 
   return (
-    <div className='py-5'>
-      <div className='containerUser'>
-        <div>
-          <Link to="usercreate"
-            className={`${classes.btn} ${classes.btn__create__new}`}
-          >
-            Create new User
-          </Link>
-        </div>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Email</th>
-              <th>UseName</th>
-              <th>FullName</th>
-              <th>Department</th>
-              <th>Position</th>
-              <th colSpan={2}>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {userList?.map((user) => (
-              <tr key={user.id}>
-                <td>{user?.id}</td>
-                <td>{user?.email}</td>
-                <td>{user?.username}</td>
-                <td>{user?.fullName}</td>
-                <td>{user?.department}</td>
-                <td>{user?.position}</td>
-                <td>
-                  <Link className={`${classes.btn} ${classes.btn__edit}`} to={`/user/${user.id}`}>
-                    Edit
-                  </Link>
-                </td>
-                <td>
-                  <button className={`${classes.btn} ${classes.btn__delete}`} onClick={() => handleDeleteConfirm(user.id)}>
-                    Delete
-                  </button>
-                </td>
+    <>
+      <div>
+        <div className='containerUser'>
+          <div>
+            <Link to="/user/create" className={`${classes.btn} ${classes.btn__create__new}`}>
+              Create new User
+            </Link>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>FirtName</th>
+                <th>LastName</th>
+                <th>Address</th>
+                <th>Birthday</th>
+                <th>Department</th>
+                <th colSpan={2}>Action</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {userList?.map((item) => (
+                <tr key={item.id}>
+                  <td>{item?.id}</td>
+                  <td>{item?.firstName}</td>
+                  <td>{item?.lastName}</td>
+                  <td>{item?.address}</td>
+                  <td>{item?.birthday}</td>
+                  <td>{item?.department}</td>
+                  <td>
+                    <Link className={`${classes.btn} ${classes.btn__edit}`} to={`/user/${item?.id}`}>
+                      Edit
+                    </Link>
+                  </td>
+                  <td>
+                    <button className={`${classes.btn} ${classes.btn__delete}`} 
+                    onClick={() => {
+                      setModalShow(true);
+                      setUserSelected(item);
+                    }}
+                      >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div> 
       </div>
-      {/* Form hỏi xác nhận xóa */}
-      {confirmDelete && (
-        <div className="confirm-delete-form">
-          <p>Are you sure you want to delete this user?</p>
-          <button onClick={handleDeleteUser}>Yes</button>
-          <button onClick={handleCancelDelete}>No</button>
-        </div>
-      )}
-    </div>
+
+      <Modal
+      show={modalShow}
+          size="md"
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+          >
+          <Modal.Header>
+            <Modal.Title id="contained-modal-title-vcenter">
+            Delete
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <h6>Are you sure you want to delete this user?</h6>  
+          </Modal.Body>
+          <Modal.Footer>
+            <Button className='bg-transparent text-black border-black border-opacity-25' 
+              onClick={() => {
+                setUserSelected(null);
+                setModalShow(false);
+            }} 
+            >
+              Cancel
+            </Button>
+            <Button className={classes.btn__delete} onClick={handleDeleteUser}>OK</Button>
+          </Modal.Footer>
+      </Modal>
+</>
   );
 };
 

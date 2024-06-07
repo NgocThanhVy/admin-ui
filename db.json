@@ -1,76 +1,36 @@
 {
   "users": [
     {
-      "id": "1",
-      "email": "random1@gmail.com",
-      "username": "user1",
-      "fullName": "Random User 1",
-      "department": "Sales",
-      "position": "Assistant"
+      "id": "V1StGXR8_Z5jdHi6B-myT",
+      "firstName": "A",
+      "lastName": "B",
+      "address": "HCM",
+      "birthday": "20/01/2001",
+      "department": "Sales"
     },
     {
       "id": "2",
-      "email": "random1@gmail.com",
-      "username": "user1",
-      "fullName": "Random User 1",
-      "department": "Sales",
-      "position": "Assistant"
+      "firstName": "A",
+      "lastName": "B",
+      "address": "HCM",
+      "birthday": "20/01/2001",
+      "department": "Sales"
     },
     {
-      "id": "3",
-      "email": "random2@gmail.com",
-      "username": "user2",
-      "fullName": "Random User 2",
-      "department": "Finance",
-      "position": "Assistant"
+      "id": "lJcBEJ35Wl",
+      "firstName": "a",
+      "lastName": "a",
+      "address": "as",
+      "birthday": "2024-05-29",
+      "department": "vti"
     },
     {
-      "id": "4",
-      "email": "random3@gmail.com",
-      "username": "user3",
-      "fullName": "Random User 3",
-      "department": "HR",
-      "position": "Manager"
-    },
-    {
-      "id": "5",
-      "email": "random4@gmail.com",
-      "username": "user4",
-      "fullName": "Random User 4",
-      "department": "IT",
-      "position": "Developer"
-    },
-    {
-      "id": "7",
-      "email": "random6@gmail.com",
-      "username": "user6",
-      "fullName": "Random User 6",
-      "department": "Finance",
-      "position": "Assistant"
-    },
-    {
-      "id": "8",
-      "email": "random7@gmail.com",
-      "username": "user7",
-      "fullName": "Random User 7",
-      "department": "Sales",
-      "position": "Manager"
-    },
-    {
-      "id": "9",
-      "email": "random8@gmail.com",
-      "username": "user8",
-      "fullName": "Random User 8",
-      "department": "HR",
-      "position": "Manager"
-    },
-    {
-      "id": "10",
-      "email": "random9@gmail.com",
-      "username": "user9",
-      "fullName": "Random User 9",
-      "department": "IT",
-      "position": "Developer"
+      "id": "Z659AI9mFk",
+      "firstName": "nhu",
+      "lastName": "ngoc",
+      "address": "la",
+      "birthday": "2024-07-06",
+      "department": "fsoft"
     }
   ]
 }

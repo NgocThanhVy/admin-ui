@@ -12,16 +12,23 @@
         background: #3c00ff;
     }
 
-    .delete__form {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: white;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+    &__delete {
+        background-color: var(--c-red-bolder);
+        boder: none;
+
+        &:hover {
+            background-color: var(--c-red-bolder);
+        }
+
+        &:focus-visible {
+            borber: none;
+
+        }
     }
 
+    &:active {
+        background-color: var(--c-red-bolder) !important;
+    }
 
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from "assets/styles/UserDetail.module.scss";
-import { Form } from 'react-router-dom';
+import Form from "components/common/Form";
 
 const UserDetail = () => {
   return (
@@ -12,4 +12,4 @@ const UserDetail = () => {
   )
 }
 
-export default UserDetail
+export default UserDetail;

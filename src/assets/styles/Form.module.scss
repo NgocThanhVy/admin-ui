@@ -1,14 +1,13 @@
 .form {
+    height: 100vh;
+    background-color: #f0f0f0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0;
 
 }
 
 .user__detail {
-
     background: #ffffff;
     padding: 20px;
     border-radius: 10px;
@@ -49,17 +48,22 @@
         button {
             display: inline-block;
             padding: 10px 20px;
-            background: #007bff;
+            background: #000;
             color: #fff;
             border: none;
             border-radius: 5px;
             font-size: 16px;
             cursor: pointer;
+            width: 100%;
             transition: background-color 0.3s;
 
             &:hover {
-                background-color: #0056b3;
+                background-color: #413f3f;
             }
+        }
+
+        .messageError {
+            color: red;
         }
     }
 }
